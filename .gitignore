@@ -1,0 +1,8 @@
+build/*
+vendor/*
+docker/data/db/mysql/*
+docker/data/*
+docker/data
+.idea/*
+composer.lock
+.php_cs.cache

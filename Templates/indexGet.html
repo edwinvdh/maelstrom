@@ -1,0 +1,30 @@
+<? $this->include('/base/header'); ?>
+<div class="container">
+    <br/>
+    <a href="/register/'" class="btn btn-primary">Nieuwe gebruiker</a>
+    <br/>
+    <br/>
+    <? $this->include('/base/messages'); ?>
+    <h3>Gebruikers</h3>
+    <table class="table table-striped">
+        <tr>
+            <th width="40%">Naam</th>
+            <th width="40%">Email</th>
+            <th width="10%;"></th>
+            <th width="10%"></th>
+        </tr>
+    <? $users = $this->get('users');
+        foreach ($users as $user) {
+        print '<tr>';
+        print '<td>' . $user->getUserName() . '</td>';
+        print '<td>' . $user->getUserEmail(). '</td>';
+        print '<td><a href="/user/?userIdentifier='.$user->getUserIdentifier().'" class="btn btn-primary">Wijzigen</a></td>';
+        print '<td><button class="btn btn-danger" value="Verwijder" onclick="confirmDelete(\''.$user->getUserIdentifier().'\')" id="deleteUserBtn">Verwijder</button></td>';
+        print '</tr>';
+        }
+    ?>
+    </table>
+</div>
+
+<? $this->include('/base/footer'); ?>
+

@@ -1,0 +1,22 @@
+<?
+    $errorMessage = $this->get('errorMessage');
+    if ($errorMessage!='') {
+?>
+    <br/>
+    <div class="alert alert-danger" role="alert">
+        <? print $this->get('errorMessage')?>
+    </div>
+    <br/>
+<? } ?>
+
+<?
+    $notificationMessage = $this->get('notificationMessage');
+    if ($notificationMessage!='') {
+?>
+    <br/>
+    <div class="alert alert-success" role="alert">
+        <? print $this->get('notificationMessage')?>
+    </div>
+    <br/>
+<? } ?>
+

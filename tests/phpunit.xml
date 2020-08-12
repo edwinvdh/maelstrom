@@ -1,0 +1,29 @@
+<phpunit bootstrap="PhpUnitBootstrap.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="helper">
+            <directory>Helper</directory>
+        </testsuite>
+        <testsuite name="infrastructure">
+            <directory>Infrastructure</directory>
+        </testsuite>
+        <testsuite name="repository">
+            <directory>Repository</directory>
+        </testsuite>
+        <testsuite name="Controller">
+            <directory>Controller</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../App/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
