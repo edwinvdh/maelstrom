@@ -13,7 +13,7 @@ Endpoints
 The following endpoints are available:
 Web interface:
 ```
-localhost:8080
+localhost:8000
 ```
 
 Phpmyadmin (usually I using this for DEV purposes):
