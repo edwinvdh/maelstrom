@@ -6,6 +6,7 @@ use App\Controller\Validation\Validator;
 use App\Domain\User\UserDomain;
 use App\Helper\Encrypt;
 use App\Helper\Request;
+use App\Helper\Uuid;
 use App\Infrastructure\PrivateKeyProvider\PrivateKeyProvider;
 use App\Repository\UserRepository;
 use Bootstrap;
@@ -27,6 +28,10 @@ class UserController extends AbstractController implements ControllerInterface
 
     public function get(Request $request): ControllerInterface
     {
+        if (!Uuid::is_valid($request->get('userIdentifier'))) {
+            die('Unable to process request');
+        }
+
         $this->setTitle('Edit User');
         $this->setDescription('Edit User');
         $user = $this->userDomain->getByUuid($request->get('userIdentifier'));
@@ -82,6 +87,10 @@ class UserController extends AbstractController implements ControllerInterface
      */
     public function delete(Request $request): ControllerInterface
     {
+        if (!Uuid::is_valid($request->get('userIdentifier'))) {
+            die('Unable to process request');
+        }
+
         $loggedInUser = $this->getLoggedInUserIdentifier();
         if ($loggedInUser == $request->get('userIdentifier')) {
             $this->session->setErrorMessage('Why are you trying to remove yourself from reality?');

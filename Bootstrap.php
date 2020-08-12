@@ -3,6 +3,7 @@
 
 use App\Console\Console;
 use App\Helper\Session;
+use App\Helper\UrlValidator;
 use App\Infrastructure\DatabaseConnector\DatabaseConnection;
 use App\Infrastructure\DatabaseConnector\PdoConnector\NativePdoConnector;
 use App\Infrastructure\EnvProvider\EnvProvider;
@@ -18,6 +19,11 @@ class Bootstrap
 
     public function __construct()
     {
+        $request = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+        if (!UrlValidator::isValid($request)) {
+            die('Unable to process request');
+        }
+
         $this->session = new Session();
         $this->databaseConnection = new DatabaseConnection(
             new NativePdoConnector(

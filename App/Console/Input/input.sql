@@ -9,3 +9,12 @@ create table User
     updatedOn datetime null,
     deletedOn datetime null
 );
+
+create unique index UserIdentifier
+	on User (userIdentifier);
+
+create index UserEmailPw
+	on User (userEmail, userPassword);
+
+create unique index UserEmail
+	on User (userEmail);
